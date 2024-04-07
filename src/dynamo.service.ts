@@ -12,7 +12,6 @@ export class DynamoService {
   }
 
   public async getItem(key: any, options?: any) {
-    console.log(`Getting ${key}`);
     const getCommand = new GetItemCommand({
       TableName: this.table,
       
@@ -29,7 +28,6 @@ export class DynamoService {
       Item: item
     });
   
-    console.log(`inserting ${item}`);
     return await this.client.send(putCommand);
   }
 
@@ -40,7 +38,6 @@ export class DynamoService {
     });
 
     const deleteResult = await this.client.send(deleteCommand);
-    console.log(`delete for ${key}: ${deleteResult.$metadata.httpStatusCode}`);
     return deleteResult;
   }
 
