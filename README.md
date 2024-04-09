@@ -1,5 +1,5 @@
 # home-ernergy-data-manager
-Manage the data in the zwell's dynamoDB
+Manage the data in the dynamoDB
 
 # Run Data Manager
 
