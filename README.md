@@ -1,4 +1,4 @@
-# home-ernergy-data-manager
+# home-energy-data-manager
 Manage the data in the dynamoDB
 
 # Run Data Manager
