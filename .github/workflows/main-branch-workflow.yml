@@ -1,0 +1,30 @@
+name: Main Branch
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  publish-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: EndBug/latest-tag@latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Install dependencies
+        shell: bash
+        run: npm install
+      - name: Build Entries
+        shell: bash
+        run: npm run build:entries
+      - name: Compress Entries
+        shell: bash
+        run: tar -czvf dynamo-entries.tgz ./dynamo-entries
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          files: dynamo-entries.tgz
